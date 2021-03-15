@@ -1,70 +1,87 @@
-<html>
-    <head>
-        <title>CANVAS</title>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body style="margin:0%; color: black;">
-        
-        <h3 style="margin:1%;color:black;"> DRAW SOMETHING ON THE CANVAS</h3>
+<head>
 
-        <canvas id="draw" height="800" width="800"></canvas>
+	
+	 <title></title>
+     <style>
+        body{
+  background-color: grey;
+}
+nav {
+  background: pink;
+  position: relative;
+  transition: all 0.5s;
+  z-index: 1;
+  top:0;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: :none;
+  display: flex;
+}
+a{
+    text-decoration: none;
+    color:black;
+    border-radius: 20px;
+  background: rgba(0,0,0,0.05);
+}
+.fixed-nav nav{
+  position: fixed;
+}
 
-    <script>
+nav li {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+font-size: 20px;
+    padding:20px;
+    display: inline;
+} 
+.wrapper{
+  font-size: 40px;
+  position:relative;
+}
+</style>
+</head>
+<body> 
+<img src ="https://assets.traveltriangle.com/blog/wp-content/uploads/2018/11/Vij%E2%80%99s.jpg" height = 400px; width=1500px;>               
+	 <div id ="main">
+    <nav>
+        <ul>
+            <img src ="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAgVBMVEX19fUAAAD8/Pz5+fn////v7+/Ozs7y8vLr6+u6urpzc3PAwMB9fX2wsLC3t7d5eXk7OzvV1dXe3t5HR0empqZXV1eQkJAMDAyYmJhdXV3b29tNTU1jY2MdHR2ioqLl5eUnJyczMzMZGRmGhoY3NzdJSUltbW0tLS1AQECbm5sbGxtLLx9SAAAEnklEQVR4nO3b63qiMBAGYHIQDwhqRQXPrbvtdu//AjfBqigEQSEJ7vf+92EcM8kkQccBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqBvrmI7gDsZ0P5HOe7ofWQWjdOm/6c0KH82p1gdWwCjv9gdxoPmx/EC6mh9ZDmOcudGYrCdcc+mIlEQWDhNRMG/hmhAy71HdkwmPCLFthhUF0/OGe5GQX76jPSMO9QkZ2jRMRME4bvSbSLGnf70RKfHEozVP6WqMUSYK5iNJCBku9Q8RGcREPHtlxzARE4gomPdjPsj+W/80cgyjJ3+SwPwwEQOk60YrcjINDEwjP6YyANMpuSoYae0aS4hDRzKCkcnSkQXTPxdM4vCmuxtJoWESg2cqAlEwjjtfpfNB9tuOuTEiQnKPYZiZyc4tWdpvjxmd71lncSxerv/RoiULRpubhJBP7S38LT47RuLrjSNpyebj23zIFt50Rhz+/RPLUl8ksmCW2zibD/IVmlt7L+FNfqJZ6ApFFMwuGHzkJITMPGpD28hO1bzSMZ2IgunkFow0MtPCZ/DBKaLG939yxZ1sZ/n5IJvIUAufwbxzUNtGcyJaVFEwe0VCyB8TJwH5Tsuw1NyyIwaIKJg/qnwQErsmTgIU6OASWDNdrNz0ixVmoU4IGS6Nr70pqcppJCfJHmb0VZAPcycBSun6rvmg4LiHmRblg5Bp32wLn0Xn6fjCGnOSu4fJWLs2FU2CvV1FeKjpFxMtWScYKleYy/N21mVEtCafVzHOaujZjnuYghXmZG9DC591OiE4ezJGMYHwZZi3h8kQLbyFCRHo6ibSZxaegj1MxsCSFj7rah1OxA8Wj5xAPNUe5tbCwGVeaTRb9ZPqwcoJRL2HyRj7XXszkjNMxKaj4sojVtyiPUxGbPhA8R5+O5tIUfnqEfkQBVNihTkzdJlX3vkk6VpQ6ndMNv3fpQtG2ljXwmfRYX7s/t2kyE2/X6FgpLE9JwEFuqrwD05B8EnBHEquMGexwcu8Cpiv/Ab7fv43EPlgblSpYBJDk5d5VeTOsCfJSE9/D9mhssn2s+AzChuzl3mV9O58lzh0Hc6pwLloQIJ5UQ6VpnacwpdTUDoXf1frwWAQT4uOyIqYv8yrhD5QBhUddq0pmiP26G9f0ntocwufi+0azcjM8hY+V95epza2XOZVxMKmEvIxb9s0ckIPzWTE7pOAYse31+oWuy2cRs6ayIldl3nV1Z6TxXd7WngF1UHBg8YBa3tGRE6iGjNi4WXeI0ptd8qx8jLvEYqDx8q+2tfCq7E6MrJqYwuvRu9e+d/1OXmdIZJgwXMJWbS2hS/yTEbGYeu7kTxPrMa2X+Y9TnmXcYe97wQ8j/UfyYgF/w5oEq+853mpbiQfq3Z9FbfpXuJRrEJSNtGrtPD3lN0ej1z+6kVzwb37L6ANvBc4CKiCOVHRTc/44LbhHYm60a6fP62MR/7uPxshF4zuguEq9Y7N+2wYuj1GLfr7iH7yD4vd3nLiuu5k2es49P9ORwr7YToOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICMf1wTMeUXzIAPAAAAAElFTkSuQmCC" height = 50px>
+	 	  
+                                <li><a href="">Home</a></li>
+                                <li><a href="">About us</a></li>
+                                <li><a href="">Pricing</a></li>
+                                <li><a href="">Catering</a></li>
+                                <li><a href="">Contact us</a></li>
+                                </ul></nav></div>
+                                <div class="wrapper">
+                            <p>The irresistible aroma of Indianspices greets you as you enter Namaste India, a hidden gem centrally located in the heart of Chinatown. One of the nicest Indian restaurants in Canada, the spacious and well-decorated place is sure to win your heart with the delicious food and warm hospitality. All dishes are spot on, prepared with fresh ingredients and spices to give you a taste of rich Indian flavours. The lovely atmosphere and impeccable service a are winners all the way, along with a superb range of vegetarian, vegan and non-vegetarian options to suit all palates. Their sumptuous lunch and dinner buffet is highly recommended.
+                            The irresistible aroma of Indianspices greets you as you enter Namaste India, a hidden gem centrally located in the heart of Chinatown. One of the nicest Indian restaurants in Canada, the spacious and well-decorated place is sure to win your heart with the delicious food and warm hospitality. All dishes are spot on, prepared with fresh ingredients and spices to give you a taste of rich Indian flavours. The lovely atmosphere and impeccable service a are winners all the way, along with a superb range of vegetarian, vegan and non-vegetarian options to suit all palates. Their sumptuous lunch and dinner buffet is highly recommended.
+                        The irresistible aroma of Indianspices greets you as you enter Namaste India, a hidden gem centrally located in the heart of Chinatown. One of the nicest Indian restaurants in Canada, the spacious and well-decorated place is sure to win your heart with the delicious food and warm hospitality. All dishes are spot on, prepared with fresh ingredients and spices to give you a taste of rich Indian flavours. The lovely atmosphere and impeccable service a are winners all the way, along with a superb range of vegetarian, vegan and non-vegetarian options to suit all palates. Their sumptuous lunch and dinner buffet is highly recommended.</p></div>
+                    </div>
+                        <script>
+                            const nav = document.querySelector('#main');
+                            const topOfNav = nav.offsetTop;
+                             function fixNav() {
+                                 if(window.scrollY >= topOfNav ){
+                                    document.body.style.paddingTop = nav.offsetHeight + 'px';
+                                    document.body.classList.add('fixed-nav');
+                                 }
+                                 else{
+                                    document.body.style.paddingTop = 0;
+                                     document.body.classList.remove('fixed-nav');
+                                 }
+                             }
+                             window.addEventListener('scroll' , fixNav);
+                        </script>
 
-        const canvas= document.querySelector("#draw");
-        const ctx= canvas.getContext('2d');
-        canvas.width= window.innerWidth;
-        canvas.height= window.innerHeight;
-        ctx.strokeStyle='blue';
-        ctx.lineJoin='round';
-        ctx.lineCap='round';
-        
-
-        let isDrawing = false;
-        let lastX=0;
-        let lastY=0;
-        let hue=0;
-        let direction=true;
-
-
-        function draw(e)
-        {
-            if(!isDrawing)
-            return;
-            console.log(e);
-            ctx.strokeStyle= `hsl(${hue},100%,50%)`;
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(e.offsetX, e.offsetY);
-            ctx.stroke();
-            [lastX, lastY] = [e.offsetX, e.offsetY];
-            hue++;
-            if(hue>360)
-            {
-                hue=0;
-            }
-            if(ctx.lineWidth>=100 ||ctx.lineWidth<=1)
-            {
-                direction=!direction;
-            }
-            if(direction)
-            {
-                ctx.lineWidth++;
-            }
-            else
-            {
-                ctx.lineWidth--;
-            }
-        }
-
-        canvas.addEventListener('mousemove', draw);
-        canvas.addEventListener('mousedown', (e) => 
-        {
-            isDrawing = true;
-            [lastX, lastY] = [e.offsetX, e.offsetY];
-        });
-        canvas.addEventListener('mouseout', () => isDrawing = false);
-        canvas.addEventListener('mouseup', () => isDrawing = false);
-</script>
-</body>
-</html>
+                            </body>
+                
+                            </html>
